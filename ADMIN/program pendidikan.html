@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="table.html">
+                        <a href="program pendidikan.html">
                             <i class="fa fa-graduation-cap"></i> <!-- Change the icon here -->
                             <span class="span">Program Pendidikan</span>
                         </a>
@@ -153,89 +153,95 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <input type="text" class="form-control input-sm" placeholder="search">
+                            <input type="text" class="form-control input-sm" id="programName" placeholder="Program/Fakultas Name">
                         </div>
-                        <div class="col-md-6 text-right">
-                            <a href="#" class="btn btn-default">Add new <i class="fa fa-plus"></i> </a>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control input-sm" id="programDescription" placeholder="Program/Fakultas Description">
                         </div>
-                    </div>
-                    <div class="table-filter">
-                        <a href="#" class="btn btn-default">Filter data</a>
-                        <span>Last 365 days</span>
+                        <div class="col-md-2 text-right">
+                            <button class="btn btn-default" onclick="addProgram()">Add new <i class="fa fa-plus"></i></button>
+                        </div>
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>S.No</th>
+                                <th>No</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Message</th>
-                                <th>Status</th>
-                                <th>Updated Date</th>
+                                <th>Description</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Saravanan</td>
-                                <td>saravana@gmail.com</td>
-                                <td>Test Message</td>
-                                <td>
-                                    <i class="fa fa-ticket"></i>
-                                </td>
-                                <td>12/10/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Saravanan</td>
-                                <td>saravana@gmail.com</td>
-                                <td>Test Message</td>
-                                <td>
-                                    <i class="fa fa-ticket"></i>
-                                </td>
-                                <td>12/10/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Saravanan</td>
-                                <td>saravana@gmail.com</td>
-                                <td>Test Message</td>
-                                <td>
-                                    <i class="fa fa-ticket"></i>
-                                </td>
-                                <td>12/10/2018</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Saravanan</td>
-                                <td>saravana@gmail.com</td>
-                                <td>Test Message</td>
-                                <td>
-                                    <i class="fa fa-ticket"></i>
-                                </td>
-                                <td>12/10/2018</td>
-                            </tr>
+                        <tbody id="programTable">
+                            <!-- ... (dynamic content will be added here) ... -->
                         </tbody>
                     </table>
-                    <div class="row table-footer">
-                        <div class="col-md-6">
-                            <span>Showing 1 to 5 of 20 entries</span>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="pagination">
-                                <li> <i class="fa fa-angle-left"></i> </li>
-                                <li class="active">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li> <i class="fa fa-angle-right"></i> </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const initialPrograms = [
+            { id: 1, name: "FITE IT Del", description: "Fakultas Teknik Informatika dan Elektro (FITE) IT Del berdiri pada tahun 2013 seiring dengan perubahan Politeknik Informatika Del (PI Del) menjadi IT Del. Saat ini FITE memiliki 3 (tiga) Program Studi sebagai berikut: Program Studi S1 Informatika, Program Sarjana (S1) Sistem Informasi, Program Sarjana (S1) Teknik Elektro" },
+            { id: 2, name: "Vokasi IT Del", description: "Pendidikan vokasi merupakan jenjang pendidikan pertama di Institut Teknologi Del sejak berdiri pada tahun 2001 (dahulu bernama Politeknik Informatika Del). Vokasi merupakan pendidikan tinggi dengan fokus pada praktik kerja yang dapat menunjang keahlian di bidang studi tertentu. Program vokasi bertujuan mempersiapkan lulusannya menjadi tenaga yang siap kerja dan mampu bersaing secara global di Dunia Usaha dan Dunia Industri (DUDI). Saat ini Vokasi memiliki 3 (tiga) Program Studi sebagai berikut: D4 (Sarjana Terapan) Teknologi Rekayasa Perangkat Lunak, D3 Teknologi Informasi, D3 Teknologi Komputer" },
+            // ... (other initial programs with descriptions)
+        ];
+
+        function initializePrograms() {
+            const programTable = document.getElementById("programTable");
+
+            initialPrograms.forEach(program => {
+                addProgramToTable(program);
+            });
+        }
+
+        function addProgram() {
+            const programNameInput = document.getElementById("programName");
+            const programDescriptionInput = document.getElementById("programDescription");
+
+            const programName = programNameInput.value.trim();
+            const programDescription = programDescriptionInput.value.trim();
+
+            if (programName !== "" && programDescription !== "") {
+                const programTable = document.getElementById("programTable");
+                const newProgramId = generateUniqueId();
+
+                const newProgram = { id: newProgramId, name: programName, description: programDescription };
+                addProgramToTable(newProgram);
+
+                programNameInput.value = "";
+                programDescriptionInput.value = "";
+            }
+        }
+
+        function addProgramToTable(program) {
+            const programTable = document.getElementById("programTable");
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${program.id}</td>
+                <td>${program.name}</td>
+                <td>${program.description}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="deleteProgram(${program.id})">Delete</button></td>
+            `;
+            programTable.appendChild(row);
+        }
+
+        function deleteProgram(programId) {
+            const programTable = document.getElementById("programTable");
+            const rowToDelete = document.querySelector(`#programTable tr td:first-child:contains('${programId}')`);
+
+            if (rowToDelete) {
+                programTable.removeChild(rowToDelete.parentElement);
+            }
+        }
+
+        function generateUniqueId() {
+            return new Date().getTime();
+        }
+
+        window.onload = initializePrograms;
+    </script>
 </body>
 
 </html>
