@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IT DEL</title>
+    <link rel="stylesheet" href="app.v1.css">
+    <link rel="stylesheet" href="dist/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.png">
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="app.v1.js"></script>
+    
+  
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="img">
+                <span class="logo-text">IT DEL</span>
+                <span class="logo-text minbar">F</span>
+            </div>
+        </div>
+        <div class="topbar">
+            <div class="left">
+                <a class="navbar-collopse"> <i class="fa fa-bars"></i> </a>
+                <span class="topbar-title">HOME</span>
+            </div>
+            <div class="right">
+                <span class="">
+                    <i class="fa fa-bell"></i>
+                </span>
+                <div class="topbar-btn">
+                    <span class="displayname">John Doe
+                        <i class="fa fa-angle-down"></i>
+                    </span>
+                    <ul class="dropdown">
+                        <li class="dropdown-username">
+                            <a href="#">
+                                John Doe
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Settings
+                            </a>
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <aside>
+            <nav>
+                <ul class="nav">
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="fa fa-home"></i> <!-- Change the icon here -->
+                            <span class="span">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bullhorn"></i> <!-- Change the icon here -->
+                            <span class="span">Pengumuman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="table.html">
+                            <i class="fa fa-graduation-cap"></i> <!-- Change the icon here -->
+                            <span class="span">Program Pendidikan</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i> <!-- Change the icon here -->
+                            <span class="span">Fasilitas</span>
+                            <span class="arrow">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-cog"></i> <!-- Change the icon here -->
+                                    <span class="span">Konfigurasi</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <!-- Change the icon here -->
+                                    <span class="span">Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i> <!-- Change the icon here -->
+                                    <span class="span">Profil</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            <i class="fa fa-building"></i> <!-- Change the icon here -->
+                            <span class="span">Lembaga</span>
+                            <span class="arrow">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-cog"></i> <!-- Change the icon here -->
+                                    <span class="span">Konfigurasi</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <!-- Change the icon here -->
+                                    <span class="span">Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i> <!-- Change the icon here -->
+                                    <span class="span">Profil</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-footer">
+                <a href="#" class="btn btn-sm">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </aside>
+            <div class="page-container">
+                <!-- Content for CRUD operations -->
+                <div class="row">
+                    <!-- Add new activity form -->
+                    <div class="col-md-6">
+                        <!-- Your existing form code -->
+                    </div>
+        
+                    <!-- Display activities in a table -->
+                    <div class="col-md-12 mt-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Activities List</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Name</th>
+                                                <th>Event Time</th>
+                                                <th>Location</th>
+                                                <th>National</th>
+                                                <th>International</th>
+                                                <th>Achievement</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="activitiesTableBody">
+                                            <!-- Placeholder data, replace this with dynamic content -->
+                                            <tr>
+                                                <td>1</td>
+                                                <td>	Festival Seni Vocal Solo Kopertis</td>
+                                                <td>11-13 Agustus 2015</td>
+                                                <td>/</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Juara 1</td>
+                                                <td>
+                                                    <button class="btn btn-primary" onclick="addActivity()">Add</button>
+                                                    <button class="btn btn-primary" onclick="deleteActivity()">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>	Lolos sebagai Peserta GO-JEK Engineering Bootcamp di Bangalore, India</td>
+                                                <td>2019</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>/</td>
+                                                <td>finalis</td>
+                                                <td>
+                                                    <button class="btn btn-primary" onclick="addActivity()">Add</button>
+                                                    <button class="btn btn-primary" onclick="deleteActivity()">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <!-- End of placeholder data -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Add your script tags for jQuery, Bootstrap, and other scripts here -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </body>
+
+    </html>
