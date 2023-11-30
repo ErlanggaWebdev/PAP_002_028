@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>IT DEL</title>
+    <meta name="keywords" content="flatui admin template">
+    <meta name="description" content="Free flatui admin template. Download free template flatui admin template at github">
+    <link rel="stylesheet" href="app.v1.css">
+    <link rel="stylesheet" href="dist/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.png">
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="js/app.v1.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="img">
+                <span class="logo-text">IT DEL</span>
+                <span class="logo-text minbar">F</span>
+            </div>
+        </div>
+        <div class="topbar">
+            <div class="left">
+                <a class="navbar-collopse"> <i class="fa fa-bars"></i> </a>
+                <span class="topbar-title">Fasilitas</span>
+            </div>
+            <div class="right">
+                <span class="">
+                    <i class="fa fa-bell"></i>
+                </span>
+                <div class="topbar-btn">
+                    <span class="displayname">John Doe
+                        <i class="fa fa-angle-down"></i>
+                    </span>
+                    <ul class="dropdown">
+                        <li class="dropdown-username">
+                            <a href="#">
+                                John Doe
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Settings
+                            </a>
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <aside>
+            <nav>
+                <ul class="nav">
+                    <li class="active">
+                        <a href="dashboard.html">
+                            <i class="fa fa-home"></i> <!-- Change the icon here -->
+                            <span class="span">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pengumuman.html">
+                            <i class="fa fa-bullhorn"></i> <!-- Change the icon here -->
+                            <span class="span">Pengumuman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="program pendidikan.html">
+                            <i class="fa fa-graduation-cap"></i> <!-- Change the icon here -->
+                            <span class="span">Program Pendidikan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fasilitas.html">
+                            <i class="fa fa-cogs"></i> <!-- Change the icon here -->
+                            <span class="span">Fasilitas</span>
+                        </a> 
+                    </li>
+                    <li>
+                        <a href="lembaga.html">
+                            <i class="fa fa-building"></i> <!-- Change the icon here -->
+                            <span class="span">Lembaga</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-footer">
+                <a href="#" class="btn btn-sm">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </aside>
+        <div class="page-container">
+            <!-- Content for CRUD operations -->
+            <div class="row">
+                <!-- Add new facility form -->
+                <div class="col-md-6">
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h3>Add New Facility</h3>
+                            <!-- Your form code for adding a new facility goes here -->
+                            <form id="addFacilityForm">
+                                <div class="form-group">
+                                    <label for="facilityName">Facility Name</label>
+                                    <input type="text" class="form-control" id="facilityName" required>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary" onclick="addFacility()">Add Facility</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Display facilities in a table -->
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Facilities List</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Image</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="facilitiesTableBody">
+                                        <!-- Placeholder data, replace this with dynamic content -->
+                                        <!-- End of placeholder data -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            // Sample data for facilities (replace this with dynamic data from a server)
+            var facilitiesData = [
+                { id: 1, name: 'Asrama' },
+                { id: 2, name: 'Laboratorium' },
+                { id: 3, name: 'Perpustakaan' },
+                { id: 4, name: 'Kantin' }
+            ];
+    
+            // Function to render facilities table
+            function renderFacilitiesTable() {
+                var tableBody = $('#facilitiesTableBody');
+                tableBody.empty();
+    
+                facilitiesData.forEach(function (facility, index) {
+                    var row = '<tr>' +
+                        '<td>' + (index + 1) + '</td>' +
+                        '<td>' + facility.name + '</td>' +
+                        '<td>' +
+                        '<button class="btn btn-danger" onclick="deleteFacility(' + facility.id + ')">Delete</button>' +
+                        '</td>' +
+                        '</tr>';
+                    tableBody.append(row);
+                });
+            }
+    
+            // Function to add a new facility
+            function addFacility() {
+                var facilityName = $('#facilityName').val();
+    
+                // Generate a unique ID for the new facility
+                var newFacilityId = facilitiesData.length + 1;
+    
+                // Create a new facility object
+                var newFacility = {
+                    id: newFacilityId,
+                    name: facilityName
+                };
+    
+                // Add the new facility to the data array
+                facilitiesData.push(newFacility);
+    
+                // Render the updated facilities table
+                renderFacilitiesTable();
+    
+                // Clear the form field
+                $('#facilityName').val('');
+            }
+    
+            // Function to delete a facility
+            function deleteFacility(facilityId) {
+                // Find the index of the facility with the given ID
+                var index = facilitiesData.findIndex(function (facility) {
+                    return facility.id === facilityId;
+                });
+    
+                // Remove the facility from the data array
+                facilitiesData.splice(index, 1);
+    
+                // Render the updated facilities table
+                renderFacilitiesTable();
+            }
+    
+            // Initial rendering of facilities table
+            renderFacilitiesTable();
+
+            // Function to render facilities table
+function renderFacilitiesTable() {
+    var tableBody = $('#facilitiesTableBody');
+    tableBody.empty();
+
+    facilitiesData.forEach(function (facility, index) {
+        var row = '<tr>' +
+            '<td>' + (index + 1) + '</td>' +
+            '<td>' + facility.name + '</td>' +
+            '<td><img src="' + getFacilityImage(facility.id) + '" alt="' + facility.name + ' Image" style="max-height: 50px;"></td>' +
+            '<td>' +
+            '<button class="btn btn-danger" onclick="deleteFacility(' + facility.id + ')">Delete</button>' +
+            '</td>' +
+            '</tr>';
+        tableBody.append(row);
+    });
+}
+
+// Function to get the image URL for a facility (replace this with your image URLs)
+function getFacilityImage(facilityId) {
+    // Add logic to retrieve the image URL based on the facilityId
+    // For example, you can have an object with facilityId-imageURL pairs
+    var imageMap = {
+        1: 'image/pniel.jpg',
+        2: 'image/bp.jpg',
+        3: 'image/perpus.jpg',
+        4: 'image/kantin.jpg'
+    };
+
+    return imageMap[facilityId] || 'path/to/default_image.jpg'; // Use a default image if no specific image is found
+}
+
+        </script>
+</body>
+
+</html>
